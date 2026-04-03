@@ -127,13 +127,31 @@
         h1 em {
             font-style: italic;
             color: var(--accent-warm);
+            position: relative;
+            z-index: 1;
+            text-shadow:
+                -3px 0 0 var(--cream),
+                3px 0 0 var(--cream),
+                0 -3px 0 var(--cream),
+                0 3px 0 var(--cream),
+                -2px -2px 0 var(--cream),
+                2px -2px 0 var(--cream),
+                -2px 2px 0 var(--cream),
+                2px 2px 0 var(--cream);
+        }
+
+        .magic-wrap {
+            position: relative;
+            display: inline-block;
         }
 
         .hero-underline {
-            display: block;
-            width: 280px;
-            height: 8px;
-            margin: 12px auto 0;
+            position: absolute;
+            bottom: 0px;
+            z-index: -1;
+            left: -4%;
+            width: 108%;
+            height: 14px;
             opacity: 0;
             animation: fadeUp 0.8s ease forwards 0.35s;
         }
@@ -141,14 +159,12 @@
         /* ── WIDGET GALLERY ── */
         .gallery {
             padding: 20px 40px 100px;
-            max-width: 720px;
-            margin: 0 auto;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
         }
 
         .widget {
@@ -165,22 +181,22 @@
         }
 
         .widget:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 48px rgba(26,26,24,0.12);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 24px 48px rgba(26,26,24,0.15);
         }
 
         .widget h3 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 22px;
-            font-weight: 400;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
             letter-spacing: -0.01em;
             margin-bottom: 2px;
         }
 
         .widget p {
-            font-size: 11px;
-            font-weight: 300;
-            opacity: 0.7;
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.75;
         }
 
         /* ── WIDGET ICON ── */
@@ -286,9 +302,9 @@
         }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -296,14 +312,16 @@
             nav { padding: 16px 20px; }
             .hero { padding: 100px 24px 48px; }
             .gallery { padding: 24px 24px 80px; }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             footer { padding: 32px 24px; }
         }
 
-        @media (max-width: 520px) {
+        @media (max-width: 480px) {
             .gallery-grid {
-                grid-template-columns: 1fr;
-                max-width: 320px;
-                margin: 0 auto;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
         }
     </style>
@@ -328,12 +346,8 @@
     <!-- HERO -->
     <section class="hero">
         <h1>
-            Products that<br>feel like <em>magic.</em>
+            Products that<br>feel like <em><span class="magic-wrap">magic.<svg class="hero-underline" viewBox="0 0 200 14" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8C18 4 42 3 68 7C94 11 120 4 146 6C164 7 182 9 198 8" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" opacity="0.5"/><path d="M4 9C22 5 46 4 72 8C98 12 124 5 150 7C168 8 186 10 198 9" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" opacity="0.3"/><path d="M6 7.5C24 4 48 5 74 9C100 10 126 5.5 152 7C170 8 188 9.5 198 8.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.2"/></svg></span></em>
         </h1>
-        <svg class="hero-underline" viewBox="0 0 280 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 5.5C40 2.5 80 3.5 120 4.5C160 5.5 200 3 240 4C256 4.3 270 5 278 5.5" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-            <path d="M4 6C50 3 90 4 130 5C170 6 210 3.5 250 4.5C262 4.8 272 5.5 278 6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
-        </svg>
     </section>
 
     <!-- WIDGET GALLERY -->
