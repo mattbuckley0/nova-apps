@@ -159,107 +159,192 @@
         /* ── WIDGET GALLERY ── */
         .gallery {
             padding: 20px 40px 100px;
+            max-width: 960px;
+            margin: 0 auto;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(200px, auto);
             gap: 16px;
         }
 
         .widget {
-            aspect-ratio: 1;
             border-radius: 16px;
-            padding: 20px;
+            padding: 28px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             position: relative;
             overflow: hidden;
             cursor: default;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .widget:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 24px 48px rgba(26,26,24,0.15);
+            min-height: 200px;
         }
 
         .widget h3 {
             font-family: 'DM Sans', sans-serif;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             letter-spacing: -0.01em;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
         }
 
         .widget p {
             font-size: 13px;
             font-weight: 400;
             opacity: 0.75;
+            position: relative;
+            z-index: 1;
         }
 
         /* ── WIDGET ICON ── */
         .widget-icon {
             position: absolute;
-            top: 18px;
-            left: 18px;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            top: 24px;
+            left: 24px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.18);
+            z-index: 1;
         }
 
         .widget-icon svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
         }
 
-        /* ── INDIVIDUAL WIDGETS ── */
+        /* ── VILLAGE ── spans 2 cols, landscape, tree silhouettes */
         .w-village {
-            background: linear-gradient(145deg, #4a7c59, #2d5a3d);
+            grid-column: span 2;
+            background: #2d5a3d;
             color: #f5f0e8;
+            min-height: 240px;
+        }
+        .w-village::before {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 40px;
+            width: 180px; height: 120px;
+            background:
+                radial-gradient(ellipse 30px 40px at 30px 80px, rgba(255,255,255,0.06) 100%, transparent 100%),
+                radial-gradient(ellipse 40px 55px at 80px 65px, rgba(255,255,255,0.08) 100%, transparent 100%),
+                radial-gradient(ellipse 25px 35px at 140px 85px, rgba(255,255,255,0.05) 100%, transparent 100%),
+                radial-gradient(ellipse 35px 50px at 160px 70px, rgba(255,255,255,0.07) 100%, transparent 100%);
         }
 
+        /* ── SPOTTED ── tall portrait card, scattered spots */
         .w-spotted {
-            background: linear-gradient(145deg, #d4945e, #c4713b);
+            background: #c4713b;
             color: #f5f0e8;
+            grid-row: span 2;
+            min-height: 280px;
+        }
+        .w-spotted::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle 8px at 75% 20%, rgba(255,255,255,0.1) 100%, transparent 100%),
+                radial-gradient(circle 5px at 85% 35%, rgba(255,255,255,0.08) 100%, transparent 100%),
+                radial-gradient(circle 12px at 60% 15%, rgba(255,255,255,0.06) 100%, transparent 100%),
+                radial-gradient(circle 6px at 90% 50%, rgba(255,255,255,0.1) 100%, transparent 100%),
+                radial-gradient(circle 4px at 70% 45%, rgba(255,255,255,0.07) 100%, transparent 100%),
+                radial-gradient(circle 9px at 80% 65%, rgba(255,255,255,0.05) 100%, transparent 100%),
+                radial-gradient(circle 7px at 55% 30%, rgba(255,255,255,0.08) 100%, transparent 100%);
         }
 
+        /* ── MARKER ── dark, waveform bars */
         .w-marker {
-            background: linear-gradient(145deg, #6b5a4e, #3d2e22);
+            background: #1c1c1c;
             color: #f5f0e8;
         }
+        .w-marker::before {
+            content: '';
+            position: absolute;
+            top: 50%; right: 24px;
+            transform: translateY(-50%);
+            width: 80px; height: 60px;
+            background:
+                linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.12) 100%) no-repeat 0px 20px / 4px 20px,
+                linear-gradient(to bottom, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.08) 100%) no-repeat 10px 10px / 4px 40px,
+                linear-gradient(to bottom, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.14) 100%) no-repeat 20px 5px / 4px 50px,
+                linear-gradient(to bottom, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.10) 100%) no-repeat 30px 15px / 4px 30px,
+                linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.12) 100%) no-repeat 40px 8px / 4px 44px,
+                linear-gradient(to bottom, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.07) 100%) no-repeat 50px 18px / 4px 24px,
+                linear-gradient(to bottom, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.11) 100%) no-repeat 60px 12px / 4px 36px,
+                linear-gradient(to bottom, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.09) 100%) no-repeat 70px 22px / 4px 16px;
+        }
 
+        /* ── SPAMMY ── red with struck-through envelope hint */
         .w-spammy {
-            background: linear-gradient(145deg, #c45c5c, #8a2e2e);
-            color: #f5f0e8;
+            background: #f5f0e8;
+            color: var(--ink);
+            border: 2px solid #c45c5c;
+        }
+        .w-spammy .widget-icon { background: rgba(196,92,92,0.12); }
+        .w-spammy .widget-icon svg { stroke: #c45c5c; }
+        .w-spammy h3 { color: #8a2e2e; }
+        .w-spammy::before {
+            content: '';
+            position: absolute;
+            top: 50%; right: 28px;
+            transform: translateY(-50%) rotate(-45deg);
+            width: 48px; height: 3px;
+            background: #c45c5c;
+            opacity: 0.25;
+            border-radius: 2px;
+        }
+        .w-spammy::after {
+            content: '';
+            position: absolute;
+            top: 50%; right: 28px;
+            transform: translateY(-50%) rotate(45deg);
+            width: 48px; height: 3px;
+            background: #c45c5c;
+            opacity: 0.25;
+            border-radius: 2px;
         }
 
+        /* ── BRAINRANK ── deep indigo with grid dots */
         .w-brainrank {
-            background: linear-gradient(145deg, #5a5e8c, #333660);
+            background: #2a2d52;
             color: #f5f0e8;
         }
+        .w-brainrank::before {
+            content: '';
+            position: absolute;
+            top: 16px; right: 16px;
+            width: 72px; height: 72px;
+            background-image: radial-gradient(circle 2px at center, rgba(255,255,255,0.15) 100%, transparent 100%);
+            background-size: 12px 12px;
+        }
 
+        /* ── SOJI ── teal, spans 2 cols, concentric ripples */
         .w-soji {
-            background: linear-gradient(145deg, #7ca3a8, #4a7278);
+            grid-column: span 2;
+            background: #4a7278;
             color: #f5f0e8;
         }
-
-        /* staggered reveal */
-        .widget {
-            opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
+        .w-soji::before {
+            content: '';
+            position: absolute;
+            top: 50%; right: 60px;
+            transform: translateY(-50%);
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.08);
+            box-shadow:
+                0 0 0 16px rgba(255,255,255,0.05),
+                0 0 0 32px rgba(255,255,255,0.03),
+                0 0 0 48px rgba(255,255,255,0.015);
         }
-        .widget:nth-child(1) { animation-delay: 0.5s; }
-        .widget:nth-child(2) { animation-delay: 0.6s; }
-        .widget:nth-child(3) { animation-delay: 0.7s; }
-        .widget:nth-child(4) { animation-delay: 0.8s; }
-        .widget:nth-child(5) { animation-delay: 0.9s; }
-        .widget:nth-child(6) { animation-delay: 1.0s; }
 
         /* ── FOOTER ── */
         footer {
@@ -302,27 +387,28 @@
         }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 1100px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
         @media (max-width: 768px) {
             nav { padding: 16px 20px; }
             .hero { padding: 100px 24px 48px; }
-            .gallery { padding: 24px 24px 80px; }
+            .gallery { padding: 24px 20px 80px; }
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr 1fr;
             }
+            .w-village,
+            .w-soji { grid-column: span 2; }
+            .w-spotted { grid-row: span 1; }
             footer { padding: 32px 24px; }
         }
 
         @media (max-width: 480px) {
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 12px;
             }
+            .w-village,
+            .w-soji { grid-column: auto; }
+            .w-spotted { grid-row: auto; }
+            .widget { min-height: 180px; }
         }
     </style>
 </head>
